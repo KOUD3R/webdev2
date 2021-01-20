@@ -11,16 +11,70 @@
         <h1>Black Goose Bistro | Pizza-on-Demand</h1>
         <p>Our 12" wood-fired pizzas are available for delivery. Build your custom pizza and we'll deliver it within an hour.</p>
     </div>
-    <form>
-        <fieldset>
-            <legend>Your Information</legend>
-            <ul>
-                <li><label>Name: <input type="text" name="name"></label></li>
-                <li><label>Address: <input type="text" name="address"></label></li>
-                <li><label>Telephone Number: <input type="telephone" name="phone"></label></li>
-                <li><label>Email: <input type="email" name="email"></label></li>
-            </ul>
-        </fieldset>
+    <form id="order" method="POST" action="http://blackgoosebistro.com/pizza.php">
+        <div>
+            <fieldset>
+                <legend>Your Information</legend>
+                <ul>
+                    <li><label>Name: <input type="text" name="customername"/></label></li>
+                    <li><label>Address: <input type="text" name="address"/></label></li>
+                    <li><label>Telephone Number: <input type="tel" name="telephone"/></label></li>
+                    <li><label>Email: <input type="email" name="email"/></label></li>
+                    <li><label>Delivery Instructions: </label></li>
+                    <li><textarea name="instructions" cols="40" rows="5" maxlength="400"></textarea></li>
+                </ul>
+            </fieldset>
+        </div>
+        <div>
+            <h2>Design your dream pizza</h2>
+            <p>Pizza specs</p>
+        </div>
+        <div>
+            <fieldset>
+                <legend>Crust(choose one)</legend>
+                <ul>
+                    <li><label>Classic White<input type="radio" name="crust" value="white"/></label></li>
+                    <li><label>Multigrain<input type="radio" name="crust" value="multigrain"/></label></li>
+                    <li><label>Cheese-stuffed<input type="radio" name="crust" value="cheese"/></label></li>
+                    <li><label>Gluten-free<input type="radio" name="crust" value="glutenFree"/></label></li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <legend>Toppings(choose as many as you want)</legend>
+                <ul>
+                    <li><label>Red sauce<input type="checkbox" name="toppings[]" value="red" checked/></label></li>
+                    <li><label>White sauce<input type="checkbox" name="toppings[]" value="white"/></label></li>
+                    <li><label>Mozzarella Cheese<input type="checkbox" name="toppings[]" value="mozzarella"/></label></li>
+                    <li><label>Pepperoni<input type="checkbox" name="toppings[]" value="pepperoni"/></label></li>
+                    <li><label>Mushrooms<input type="checkbox" name="toppings[]" value="mushrooms"/></label></li>
+                    <li><label>Peppers<input type="checkbox" name="toppings[]" value="peppers"/></label></li>
+                    <li><label>Anchovies<input type="checkbox" name="toppings[]" value="anchovies"/></label></li>
+                </ul>
+            </fieldset>
+        </div>
+        <div>
+            <fieldset>
+                <legend>Number</legend>
+                <ul>
+                    <li>
+                        <label>How many pizzas:</label>
+                        <select name="number">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </li>
+                </ul>
+                    
+            </fieldset>
+        </div>
+        <div>
+            <button type="submit">Bring me a pizza!</button>
+            <button type="reset">Reset</button>
+        </div>
     </form>
 </body>
 </html>
