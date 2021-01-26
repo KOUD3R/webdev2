@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game Night</title>
+    <style>
+        body {background-color: rgb(205, 250, 255);}
+    </style>
+    <script>
+        function partyOn() {
+            var name = prompt("What is your name?");
+            if (name) {
+                alert("The next pop-up will be your party reservation. Print it.");
+                alert("Admit one to the ACM Club party: " + name);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Park ACM Club Game Night</h1>
+    <p>Join Park's ACM Club for another wild and crazy night of computer fun!</p>
+    <ul>
+        <li>Play computer games!</li>
+        <li>Talk about computers!</li>
+        <li>Win posters of your favorite computers!</li>
+    </ul>
+    <p>Confirm your reservation now by clicking below.</p>
+    <input type="button" value="Party Reservations" onclick="partyOn();"/>
+</body>
+</html>
