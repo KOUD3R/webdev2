@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Root's Calc</title>
+</head>
+
+<body>
+    <script>
+        function calculateRoots() {
+            console.log("hi");
+            a = document.getElementById("a")
+            console.log(typeof a)
+            b = document.getElementById("b");
+            c = document.getElementById("c");
+
+            var mostMath = (Math.sqrt((b^2)-(4*a*c)))/(2*a);
+            var firstAnswer = -b + mostMath;
+            var secondAnswer = -b - mostMath;
+
+            document.getElementById("solution").innerHTML = firstAnswer + ", " + secondAnswer;
+        };
+    </script>
+    <div>
+        <h1>Quadratic Equation Roots Calculator</h1>
+        <p>This web page finds the roots of a polynomial equation of the following form:</p>
+        <p><i>ax&sup2; + bx + c</i> = 0</p>
+        <p><i>a, b, and c</i> must be integers between -99 and 99, and a must be non-zero.</p>
+        <br />
+    </div>
+    <div>
+        <form id="rootCalcForm" onsubmit="calculateRoots();">
+            <label>a: <input name="a" id="a" type="number" min="-99" max="99" step="1"/></label>
+            <label>b: <input name="b" id="b" type="number" min="-99" max="99" step="1"/></label>
+            <label>c: <input name="c" id="c" type="number" min="-99" max="99" step="1"/></label>
+            <br />
+            <button type="submit">Calcuate roots</button>            
+
+        </form>
+
+        <br />
+        <p id="solution"></p>
+    </div>
+</body>
+
+</html>
