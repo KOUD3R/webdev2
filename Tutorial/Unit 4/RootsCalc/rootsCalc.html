@@ -6,22 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Root's Calc</title>
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+    </style>
 </head>
 
 <body>
     <script>
         function calculateRoots() {
-            console.log("hi");
-            a = document.getElementById("a")
-            console.log(typeof a)
-            b = document.getElementById("b");
-            c = document.getElementById("c");
+            a = parseInt(document.getElementById("a").value);
+            b = parseInt(document.getElementById("b").value);
+            c = parseInt(document.getElementById("c").value);
 
-            var mostMath = (Math.sqrt((b^2)-(4*a*c)))/(2*a);
-            var firstAnswer = -b + mostMath;
-            var secondAnswer = -b - mostMath;
+            errorMessage = "";
 
-            document.getElementById("solution").innerHTML = firstAnswer + ", " + secondAnswer;
+            if (a < -99 || a > 99 || a == 0) {
+                errorMessage = errorMessage + "Invalid entry for a, must be a non-zero integer between -99 and 99.\n";
+                document.getElementById("a").classList.add('error');
+                setTimeout(function () {
+                    document.getElementById("a").classList.remove('error');
+                }, 3000);
+            }
+            if (b < -99 || b > 99) {
+                errorMessage = errorMessage + "Invalid entry for b, must be an integer between -99 and 99.\n";
+                document.getElementById("b").classList.add('error');
+                setTimeout(function () {
+                    document.getElementById("b").classList.remove('error');
+                }, 3000);
+            }
+            if (c < -99 || c > 99) {
+                errorMessage = errorMessage + "Invalid entry for c, must be an integer between -99 and 99.\n"
+                document.getElementById("c").classList.add('error');
+                setTimeout(function () {
+                    document.getElementById("c").classList.remove('error');
+                }, 3000);
+            }
+
+            if (errorMessage != "") {
+                confirm(errorMessage);
+                return;
+            }
+
+            console.log((-1 * b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a));
+            if (Math.pow(b, 2) > 4 * a * c) {
+                var firstSolution = (-1 * b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
+                var secondSolution = (-1 * b - Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
+                document.getElementById("solution").innerHTML = "Solutions: x=" + firstSolution + ", " + secondSolution;
+                return;
+            } if (Math.pow(b, 2) == 4 * a * c) {
+                var singleSolution = (-1 * b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
+                document.getElementById("solution").innerHTML = "Solution: x=" + singleSolution;
+                return;
+            } else if (Math.pow(b, 2) < 4 * a * c) {
+                document.getElementById("solution").innerHTML = "X roots are imaginary";
+                return;
+            };
+
         };
     </script>
     <div>
@@ -32,12 +74,12 @@
         <br />
     </div>
     <div>
-        <form id="rootCalcForm" onsubmit="calculateRoots();">
-            <label>a: <input name="a" id="a" type="number" min="-99" max="99" step="1"/></label>
-            <label>b: <input name="b" id="b" type="number" min="-99" max="99" step="1"/></label>
-            <label>c: <input name="c" id="c" type="number" min="-99" max="99" step="1"/></label>
+        <form id="rootCalcForm">
+            <label>a: <input name="a" id="a" type="number" min="-99" max="99" step="1" /></label>
+            <label>b: <input name="b" id="b" type="number" min="-99" max="99" step="1" /></label>
+            <label>c: <input name="c" id="c" type="number" min="-99" max="99" step="1" /></label>
             <br />
-            <button type="submit">Calcuate roots</button>            
+            <button type="button" onclick="calculateRoots();">Calcuate roots</button>
 
         </form>
 
